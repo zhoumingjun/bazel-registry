@@ -1,6 +1,6 @@
 module(
     name = "com_google_googleapis",
-    version = "0.0.0-bzlmod.1",
+    version = "64926d52febbf298cb82a8f472ade4a3969ba922",
 )
 
 bazel_dep(name = "rules_proto", version = "5.3.0-21.7" )

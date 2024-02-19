@@ -6,7 +6,7 @@ index 000000000..c26575773
 @@ -0,0 +1,23 @@
 +module(
 +    name = "com_google_googleapis",
-+    version = "0.0.0-bzlmod.1",
++    version = "64926d52febbf298cb82a8f472ade4a3969ba922",
 +)
 +
 +bazel_dep(name = "protobuf", version = "21.7", repo_name = "com_google_protobuf")

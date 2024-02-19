@@ -5,7 +5,7 @@
         "github:googleapis/googleapis"
     ],
     "versions": [
-        "0.0.0-bzlmod.1"
+        "64926d52febbf298cb82a8f472ade4a3969ba922"
     ],
     "yanked_versions": {}
 }
