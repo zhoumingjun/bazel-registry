@@ -1,60 +1,93 @@
-diff -r 5aa42bf25259 -r 7094a89bee42 MODULE.bazel
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/MODULE.bazel	Mon Dec 11 14:25:44 2023 -0800
-@@ -0,0 +1,18 @@
+diff --git a/MODULE.bazel b/MODULE.bazel
+new file mode 100644
+index 000000000..c26575773
+--- /dev/null
++++ b/MODULE.bazel
+@@ -0,0 +1,23 @@
 +module(
-+    name = "googleapis",
++    name = "com_google_googleapis",
 +    version = "0.0.0-bzlmod.1",
-+    repo_name = "com_google_googleapis",
 +)
 +
-+bazel_dep(
-+    name = "rules_proto",
-+    version = "5.3.0-21.7",
-+)
-+bazel_dep(
-+    name = "protobuf",
-+    version = "21.7",
-+    repo_name = "com_google_protobuf",
-+)
++bazel_dep(name = "protobuf", version = "21.7", repo_name = "com_google_protobuf")
++bazel_dep(name = "rules_proto", version = "5.3.0-21.7")
++bazel_dep(name = "rules_go", version = "0.45.1", repo_name = "io_bazel_rules_go" )
 +
-+imports = use_extension(":extensions.bzl", "imports")
-+use_repo(imports, "com_google_googleapis_imports")
-diff -r 5aa42bf25259 -r 7094a89bee42 extensions.bzl
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/extensions.bzl	Mon Dec 11 14:25:44 2023 -0800
-@@ -0,0 +1,34 @@
-+"""Module extension for generating imports."""
-+
-+load(
-+    "@com_google_googleapis//:repository_rules.bzl",
-+    "switched_rules_by_language",
++switched_rules = use_extension("//:extensions.bzl", "switched_rules")
++switched_rules.use_languages(
++    cc = True,
++    csharp = True,
++    gapic = True,
++    go = True,
++    grpc = True,
++    java = True,
++    nodejs = True,
++    php = True,
++    python = True,
++    ruby = True,
 +)
++use_repo(switched_rules, "com_google_googleapis_imports")
+diff --git a/WORKSPACE.bzlmod b/WORKSPACE.bzlmod
+new file mode 100644
+index 000000000..fafa28da3
+--- /dev/null
++++ b/WORKSPACE.bzlmod
+@@ -0,0 +1,2 @@
++# When Bzlmod is enabled, this file replaces the content of the original WORKSPACE
++# and makes sure no WORKSPACE prefix or suffix are added when Bzlmod is enabled.
+diff --git a/extensions.bzl b/extensions.bzl
+new file mode 100644
+index 000000000..d8f04cf6c
+--- /dev/null
++++ b/extensions.bzl
+@@ -0,0 +1,50 @@
++load(":repository_rules.bzl", "switched_rules_by_language")
 +
-+_types_tag = tag_class(
++_use_languages_tag = tag_class(
 +    attrs = {
-+        "java": attr.bool(),
-+        "cc": attr.bool(),
++        "cc": attr.bool(default = False),
++        "csharp": attr.bool(default = False),
++        "gapic": attr.bool(default = False),
++        "go": attr.bool(default = False),
++        "go_test": attr.bool(default = False),
++        "grpc": attr.bool(default = False),
++        "java": attr.bool(default = False),
++        "nodejs": attr.bool(default = False),
++        "php": attr.bool(default = False),
++        "python": attr.bool(default = False),
++        "ruby": attr.bool(default = False),
 +    },
 +)
 +
-+def _imports_impl(mctx):
-+    java = False
-+    cc = False
-+    for module in mctx.modules:
-+        for types in module.tags.types:
-+            java = java or types.java
-+            cc = cc or types.cc
++def _switched_rules_impl(ctx):
++    attrs = {}
++    for module in ctx.modules:
++        if not module.is_root:
++            continue
++
++        for t in module.tags.use_languages:
++            attrs = {
++                "cc": t.cc,
++                "csharp": t.csharp,
++                "gapic": t.gapic,
++                "go": t.go,
++                "go_test": t.go_test,
++                "grpc": t.grpc,
++                "java": t.java,
++                "nodejs": t.nodejs,
++                "php": t.php,
++                "python": t.python,
++                "ruby": t.ruby,
++            }
 +
 +    switched_rules_by_language(
 +        name = "com_google_googleapis_imports",
-+        java = java,
-+        cc = cc,
++        **attrs
 +    )
 +
-+imports = module_extension(
-+    implementation = _imports_impl,
++switched_rules = module_extension(
++    implementation = _switched_rules_impl,
 +    tag_classes = {
-+        "types": _types_tag,
++        "use_languages": _use_languages_tag,
 +    },
 +)
