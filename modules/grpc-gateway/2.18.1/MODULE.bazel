@@ -1,6 +1,8 @@
 module(
     name = "grpc-gateway",
-    version = "2.18.1"
+    version = "2.18.1",
+    repo_name = "grpc_ecosystem_grpc_gateway",
+
 )
 
 # Bazel Central Registry modules.
