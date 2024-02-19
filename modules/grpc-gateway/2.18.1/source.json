@@ -3,7 +3,7 @@
     "integrity": "sha256-RA4sso9buEFp8pVsgi98U3QLF9lrxR4vN47O0cD2Mhk=",
     "strip_prefix": "grpc-gateway-2.18.1",
     "patches": {
-        "module.patch": "sha256-qspH31BgGjHTLSVvXs5qdgVmYJhB7Gen7KHfOtqiBHo="
+        "module.patch": "sha256-JpyFCQSBDD75aZEH1HdQp3IEcBG4/3gljhRx6r+H+Zs="
     },
     "patch_strip": 1
 }

@@ -1,7 +1,6 @@
 module(
     name = "grpc-gateway",
-    version = "2.18.1",
-    repo_name = "grpc_ecosystem_grpc_gateway",
+    version = "2.18.1"
 )
 
 # Bazel Central Registry modules.
@@ -31,8 +30,8 @@ bazel_dep(
 
 # WFA registry modules.
 bazel_dep(
-    name = "googleapis",
-    version = "0.0.0-bzlmod.1",
+    name = "com_google_googleapis",
+    version = "64926d52febbf298cb82a8f472ade4a3969ba922", repo_name = "googleapis",
 )
 
 go_deps = use_extension("@bazel_gazelle//:extensions.bzl", "go_deps")

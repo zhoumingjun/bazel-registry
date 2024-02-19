@@ -35,8 +35,8 @@ diff -r 0939ff3008b7 -r a5ae6bce2272 MODULE.bazel
 +
 +# WFA registry modules.
 +bazel_dep(
-+    name = "googleapis",
-+    version = "0.0.0-bzlmod.1",
++    name = "com_google_googleapis",
++    version = "64926d52febbf298cb82a8f472ade4a3969ba922", repo_name = "googleapis",
 +)
 +
 +go_deps = use_extension("@bazel_gazelle//:extensions.bzl", "go_deps")
