@@ -1,0 +1,9 @@
+{
+    "url": "https://github.com/grpc-ecosystem/grpc-gateway/archive/refs/tags/v2.19.1.tar.gz",
+    "integrity": "sha256-ideKu+Ssp3zngjIjlF6FKuwxyHqMeqwIQ0Dvn1P9ljc=",
+    "strip_prefix": "grpc-gateway-2.19.1",
+    "patches": {
+        "module.patch": "sha256-/MbFHKyccyaksd4nYMuHs95SNmQH454CV+3KoQ8j/HI="
+    },
+    "patch_strip": 1
+}

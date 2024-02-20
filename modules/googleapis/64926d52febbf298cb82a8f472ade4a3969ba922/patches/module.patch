@@ -5,7 +5,7 @@ index 000000000..c26575773
 +++ b/MODULE.bazel
 @@ -0,0 +1,23 @@
 +module(
-+    name = "com_google_googleapis",
++    name = "googleapis",
 +    version = "64926d52febbf298cb82a8f472ade4a3969ba922",
 +)
 +

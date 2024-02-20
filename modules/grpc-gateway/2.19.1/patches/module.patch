@@ -4,7 +4,7 @@ diff -r 0939ff3008b7 -r a5ae6bce2272 MODULE.bazel
 @@ -0,0 +1,62 @@
 +module(
 +    name = "grpc-gateway",
-+    version = "2.18.1",
++    version = "2.19.1",
 +    repo_name = "grpc_ecosystem_grpc_gateway",
 +)
 +
