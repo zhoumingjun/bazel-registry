@@ -3,7 +3,7 @@
     "integrity": "sha256-ideKu+Ssp3zngjIjlF6FKuwxyHqMeqwIQ0Dvn1P9ljc=",
     "strip_prefix": "grpc-gateway-2.19.1",
     "patches": {
-        "module.patch": "sha256-/MbFHKyccyaksd4nYMuHs95SNmQH454CV+3KoQ8j/HI="
+        "module.patch": "sha256-5TPhQwPzF77W9wS8LjTV57i4lhI8RvdWFTWtBeMOk9I="
     },
     "patch_strip": 1
 }

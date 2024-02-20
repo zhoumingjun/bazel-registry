@@ -32,7 +32,7 @@ bazel_dep(
 
 # WFA registry modules.
 bazel_dep(
-    name = "com_google_googleapis",
+    name = "googleapis",
     version = "64926d52febbf298cb82a8f472ade4a3969ba922", repo_name = "googleapis",
 )
 
